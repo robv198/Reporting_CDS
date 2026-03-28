@@ -34,7 +34,8 @@ define view entity Z_ERP_CDS_PR_PORT_APL
                            semanticObjectAction: 'display' } ],
         selectionField: [ { position: 10 } ]
       }
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_BusinessUserVH', element: 'UserID' } } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_BusinessUserVH', element: 'UserID' },
+                                            useForValidation: true } ]
       @Consumption.semanticObject: 'BusinessUser'
   key User.UserID,
 
@@ -64,7 +65,9 @@ define view entity Z_ERP_CDS_PR_PORT_APL
                            semanticObjectAction: 'display' } ],
         selectionField: [ { position: 30 } ]
       }
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_PurchaseRequisition', element: 'PurchaseRequisition' } } ]
+      // I_PurchaseRequisitionVH is the dedicated value help entity for PR numbers
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_PurchaseRequisitionVH', element: 'PurchaseRequisition' },
+                                            useForValidation: true } ]
       @Consumption.semanticObject: 'PurchaseRequisition'
   key _PRItem.PurchaseRequisition,
 
@@ -85,7 +88,8 @@ define view entity Z_ERP_CDS_PR_PORT_APL
       @UI.lineItem: [ { position: 80, importance: #MEDIUM,
                         type: #WITH_INTENT_BASED_NAVIGATION,
                         semanticObjectAction: 'display' } ]
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_ProductStdVH', element: 'Product' } } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_ProductStdVH', element: 'Product' },
+                                            useForValidation: true } ]
       @Consumption.semanticObject: 'Material'
       _PRItem.Material,
 
@@ -94,14 +98,16 @@ define view entity Z_ERP_CDS_PR_PORT_APL
 
   // ─── Logistics ────────────────────────────────────────────────────────────
 
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_StorageLocationStdVH', element: 'StorageLocation' } } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_StorageLocationStdVH', element: 'StorageLocation' },
+                                            useForValidation: true } ]
       _PRItem.StorageLocation,
 
       @UI: {
         lineItem:      [ { position: 100, importance: #MEDIUM } ],
         selectionField: [ { position: 50 } ]
       }
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Plant', element: 'Plant' } } ]
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_Plant', element: 'Plant' },
+                                            useForValidation: true } ]
       _PRItem.Plant,
 
   // ─── Quantities ───────────────────────────────────────────────────────────
@@ -131,7 +137,9 @@ define view entity Z_ERP_CDS_PR_PORT_APL
                            semanticObjectAction: 'display' } ],
         selectionField: [ { position: 60 } ]
       }
-      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_PurchaseOrder', element: 'PurchaseOrder' } } ]
+      // I_PurchaseOrderVH is the dedicated value help entity for PO numbers
+      @Consumption.valueHelpDefinition: [ { entity: { name: 'I_PurchaseOrderVH', element: 'PurchaseOrder' },
+                                            useForValidation: true } ]
       @Consumption.semanticObject: 'PurchaseOrder'
       _POItem.PurchaseOrder,
 
